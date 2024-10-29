@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class GameData
 {
-    [Header("Player Settings")]
-    public float currentHealth;
-    public float maxHealth;
+    [Header("Player Status")]
     public int playerMoney;
+    public int fishCaught;
     public Vector3 spawnPoint;
 
-    [Header("Player Statistics")]
-    public int deathCount;
     public int percentageToCollect;
     public int percentageCollected;
 
@@ -22,15 +19,10 @@ public class GameData
     // the game starts with when there's no data to load
     public GameData()
     {
-        this.maxHealth = 100f;
-        this.currentHealth = 100f;
         this.playerMoney = 0;
+        this.fishCaught = 0;
 
         spawnPoint = Vector3.zero;
-
-        this.deathCount = 0;
-        percentageToCollect = 100;
-        percentageCollected = 0;
     }
 
     public int GetPercentageComplete()
