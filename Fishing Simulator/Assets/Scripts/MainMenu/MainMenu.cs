@@ -51,6 +51,12 @@ public class MainMenu : MonoBehaviour
         settingsMenu.SetActive(false);
     }
 
+    public void EnterSaveSlots()
+    {
+        playMenu.SetActive(false);
+        saveSlotsMenu.SetActive(true);
+    }
+
     public void ExitSaveSlots()
     {
         playMenu.SetActive(true);
