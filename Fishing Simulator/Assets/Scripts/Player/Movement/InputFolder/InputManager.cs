@@ -11,7 +11,7 @@ public class InputManager : ScriptableObject, PlayerInputMap.IPlayerActions
 {
     private PlayerInputMap playerMovement;
 
-    public event UnityAction<Vector3> MovementEvent = delegate { };
+    public event UnityAction<Vector2> MovementEvent = delegate { };
 
 
     private void OnEnable()
@@ -27,7 +27,7 @@ public class InputManager : ScriptableObject, PlayerInputMap.IPlayerActions
 
     void PlayerInputMap.IPlayerActions.OnMovement(InputAction.CallbackContext context)
     {
-        MovementEvent.Invoke(context.ReadValue<Vector3>());
+        MovementEvent.Invoke(context.ReadValue<Vector2>());
     }
-    
+
 }
