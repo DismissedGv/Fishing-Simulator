@@ -52,7 +52,7 @@ public class PlayerMovementScript : MonoBehaviour
     {
         print(moveInput);
         // Target velocity based on input
-        Vector3 targetVelocity = new Vector2(moveInput.x, moveInput.y) * moveSpeed;
+        Vector2 targetVelocity = new Vector2(moveInput.x, moveInput.y) * moveSpeed;
 
         // Smoothly update velocity towards target velocity using acceleration/deceleration
         if (moveInput != Vector2.zero)
