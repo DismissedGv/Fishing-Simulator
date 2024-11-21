@@ -4,19 +4,24 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [Header("New, Load & Continue")]
+    [Header("Menu Buttons")]
     [SerializeField] private Button newGameButton;
     [SerializeField] private Button loadGameButton;
     [SerializeField] private Button continueGameButton;
-    [SerializeField] private SaveSlotsMenu _saveSlotsMenu;
 
-    [Header("Main Menu")]
+    [Header("Menu Navigation")]
     [SerializeField] private GameObject maineMenu;
     [SerializeField] private GameObject playMenu;
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject saveSlotsMenu;
+    [SerializeField] private SaveSlotsMenu _saveSlotsMenu;
 
     private void Start()
+    {
+       DisableButtonsDependingOnData();
+    }
+
+    private void DisableButtonsDependingOnData()
     {
         // if there is no game data, disable the continue game button
         if (!DataPersistenceManager.instance.HasGameData())
@@ -26,7 +31,7 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-//====================================================================================================== Main Menu
+//====================================================================================================== Menu Navigation
     public void EnterPlay()
     {
         maineMenu.SetActive(false);
@@ -68,18 +73,20 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-//====================================================================================================== New, Load & Continue
-    public void NewGame()
-    {
+//====================================================================================================== Menu Buttons
+    public void OnNewGameClicked()
+    {   
         _saveSlotsMenu.ActivateMenu(false);
+        EnterSaveSlots();
     }
 
-    public void LoadGame()
+    public void OnLoadGameClicked()
     {
         _saveSlotsMenu.ActivateMenu(true);
+        EnterSaveSlots();
     }
 
-    public void ContinueGame()
+    public void OnContinueGameClicked()
     {
         DisableMenuButtons();
 
