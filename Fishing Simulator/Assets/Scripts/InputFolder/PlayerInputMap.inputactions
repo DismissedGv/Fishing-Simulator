@@ -72,6 +72,34 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "MinigameInputAction",
+            "id": "ebcb9d8f-7348-4465-b390-1e5f8a7f2415",
+            "actions": [
+                {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "7a8c4609-cfc5-4d6f-9900-fcc9d18b016e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ddec7a91-3edb-47b9-bb26-dbdd98cbbded",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

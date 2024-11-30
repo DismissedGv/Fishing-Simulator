@@ -39,6 +39,11 @@ public class PlayerMovementScript : MonoBehaviour
 
     private Vector2 moveInput; // Stores the movement input
     private Vector3 velocity; // Current velocity of the player
+
+    // booleans
+    public bool hooked;
+    public bool caught;
+    
     void Start()
     {
         if (inputManager != null)
@@ -50,6 +55,12 @@ public class PlayerMovementScript : MonoBehaviour
 
     private void Update()
     {
+        if (hooked)
+        {
+            if (caught) { hooked = false; caught = false; }
+            return;
+        }
+
         print(moveInput);
         // Target velocity based on input
         Vector2 targetVelocity = new Vector2(moveInput.x, moveInput.y) * moveSpeed;
