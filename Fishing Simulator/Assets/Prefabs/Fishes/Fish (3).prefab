@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24dc5ca0ddc21fe498cb461a52a1bcd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FishIndex: 3
+  ItemName: fish3
   FishSpeed: 1.5
   left: 0
 --- !u!58 &8729481767318557952

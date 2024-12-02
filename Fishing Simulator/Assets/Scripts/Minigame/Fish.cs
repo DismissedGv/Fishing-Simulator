@@ -3,7 +3,7 @@ using UnityEngine;
 public class Fish : MonoBehaviour
 {
     [Header("Components")]
-    [SerializeField] private int FishIndex;
+    [SerializeField] private string ItemName;
     [SerializeField] [Range(0.1f, 5)] float FishSpeed = 0.1f;
     [HideInInspector] public bool left;
     private GameObject Hook;
@@ -47,7 +47,8 @@ public class Fish : MonoBehaviour
         else if (collision.gameObject.tag == "Caught")
         {
             fishingController.occupied = false;
-            inventoryManager.AddFish(FishIndex);
+            spawnManager.CurrentSpawnedAmount--;
+            inventoryManager.AddItem(1, ItemName);
             Destroy(gameObject);
         }
     }

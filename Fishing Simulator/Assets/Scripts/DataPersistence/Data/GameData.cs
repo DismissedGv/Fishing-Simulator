@@ -9,6 +9,12 @@ public class GameData
     public int fishCaught;
     public Vector3 spawnPoint;
 
+    [Header("Inventory")]
+    public int fish1;
+    public int fish2;
+    public int fish3;
+    public int fish4;
+
     public int percentageToCollect;
     public int percentageCollected;
 
@@ -21,6 +27,10 @@ public class GameData
     {
         this.playerMoney = 0;
         this.fishCaught = 0;
+        this.fish1 = 0;
+        this.fish2 = 0;
+        this.fish3 = 0;
+        this.fish4 = 0;
 
         spawnPoint = Vector3.zero;
     }
