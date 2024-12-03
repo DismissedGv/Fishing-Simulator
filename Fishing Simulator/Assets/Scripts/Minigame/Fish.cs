@@ -89,6 +89,6 @@ public class Fish : MonoBehaviour
 
     private void Hooked()
     {
-        gameObject.transform.parent = Hook.transform;
+        gameObject.transform.SetParent(Hook.transform);
     }
 }
