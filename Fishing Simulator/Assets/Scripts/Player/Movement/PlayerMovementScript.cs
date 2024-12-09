@@ -27,6 +27,7 @@
 //         moveValue = value;
 //     }
 // }
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -43,8 +44,8 @@ public class PlayerMovementScript : MonoBehaviour
     // booleans
     public bool hooked;
     public bool caught;
-    
-    void Start()
+
+    public void Start()
     {
         if (inputManager != null)
         {
@@ -53,7 +54,7 @@ public class PlayerMovementScript : MonoBehaviour
     }
 
 
-    private void Update()
+    public void Update()
     {
         if (hooked)
         {
@@ -61,7 +62,6 @@ public class PlayerMovementScript : MonoBehaviour
             return;
         }
 
-        print(moveInput);
         // Target velocity based on input
         Vector2 targetVelocity = new Vector2(moveInput.x, moveInput.y) * moveSpeed;
 
@@ -87,4 +87,6 @@ public class PlayerMovementScript : MonoBehaviour
     {
         moveInput = value;
     }
+
+
 }

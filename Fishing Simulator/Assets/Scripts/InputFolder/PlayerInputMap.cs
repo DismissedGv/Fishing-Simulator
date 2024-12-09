@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
+public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
 {
     public InputActionAsset asset { get; }
     public @PlayerInputMap()
