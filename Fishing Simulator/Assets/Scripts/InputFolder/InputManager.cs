@@ -12,7 +12,7 @@ public class InputManager : ScriptableObject, PlayerInputMap.IPlayerActions
     private PlayerInputMap playerMovement;
 
     public event UnityAction<Vector2> MovementEvent = delegate { };
-    public event UnityAction<bool> InventoryEvent = delegate { };
+    public event UnityAction InventoryEvent = delegate { };
 
 
     public void OnEnable()
@@ -32,7 +32,7 @@ public class InputManager : ScriptableObject, PlayerInputMap.IPlayerActions
     }
     void PlayerInputMap.IPlayerActions.OnInventory(InputAction.CallbackContext context)
     {
-        InventoryEvent.Invoke(context.ReadValue<bool>());
+        if (context.performed) { InventoryEvent.Invoke(); };
     }
 
 }
