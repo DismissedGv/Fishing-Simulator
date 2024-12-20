@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -9,6 +7,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private GameObject Inventory;
 
     [SerializeField] private PlayerInputMap inputManager;
+    public bool isInventoryOpen;
 
     private void Awake()
     {
@@ -31,6 +30,7 @@ public class InventoryManager : MonoBehaviour
         else
         {
             Inventory.SetActive(false);
+            List<GameObject> items = new List<GameObject>(GameObject.FindGameObjectsWithTag("InventoryItem"));
         }
     }
 
@@ -41,6 +41,20 @@ public class InventoryManager : MonoBehaviour
             if (item.GetComponent<InventoryItem>().ItemName == ItemName)
             {
                 item.GetComponent<InventoryItem>().amount += amount;
+                item.GetComponent<InventoryItem>().UpdateUI();
+                UpdateUI(item);
+                break;
+            }
+        }   
+    }
+
+    public void SellItem(int amount, string ItemName)
+    {
+        foreach (var item in items)
+        {
+            if (item.GetComponent<InventoryItem>().ItemName == ItemName)
+            {
+                item.GetComponent<InventoryItem>().amount -= amount;
                 item.GetComponent<InventoryItem>().UpdateUI();
                 UpdateUI(item);
                 break;

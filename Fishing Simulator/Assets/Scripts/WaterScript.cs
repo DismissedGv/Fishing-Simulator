@@ -11,7 +11,6 @@ public class WaterScript : MonoBehaviour
     public void Start()
     {
         playerMovementScript = player.GetComponent<PlayerMovementScript>();
-        Debug.Log(playerMovementScript);
     }
     public void OnMouseDown()
     {

@@ -10,6 +10,8 @@ public class GameData
     public Vector3 spawnPoint;
 
     [Header("Inventory")]
+    public int gold;
+
     public int fish1;
     public int fish2;
     public int fish3;
@@ -27,6 +29,7 @@ public class GameData
     {
         this.playerMoney = 0;
         this.fishCaught = 0;
+        this.gold = 0;
         this.fish1 = 0;
         this.fish2 = 0;
         this.fish3 = 0;

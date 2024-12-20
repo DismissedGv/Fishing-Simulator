@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +5,7 @@ public class ShopItem : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] string itemName;
-    [SerializeField] float price;
+    [SerializeField] int price;
     [SerializeField] int purchaseAmount;
     [SerializeField] int StockAmount;
     
@@ -16,15 +13,17 @@ public class ShopItem : MonoBehaviour
     private Button purchaseButton;
     private Image itemImage;
     private InventoryManager inventoryManager;
+    GoldManager goldManager;
 
     private void Start()
     {
         inventoryManager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
+        goldManager = GameObject.Find("Managers").GetComponent<GoldManager>();
 
         purchaseButton = transform.GetComponentInChildren<Button>();
         itemImage = transform.GetChild(0).GetComponent<Image>();
 
-        purchaseButton.onClick.AddListener(BuyItem); 
+        purchaseButton.onClick.AddListener(BuyItem);
     }
 
     private void BuyItem()
@@ -34,6 +33,7 @@ public class ShopItem : MonoBehaviour
             inventoryManager.AddItem(purchaseAmount, itemName);
             Debug.Log("Bought " + itemName + " for " + price);
             StockAmount -= purchaseAmount;
+            goldManager.WasteMoney(price);
         }
         else
         {
