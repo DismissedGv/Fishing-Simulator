@@ -6,6 +6,7 @@ using UnityEngine;
 public class EPress : MonoBehaviour
 {
     [SerializeField] public GameObject currentPosition;
+    [SerializeField] public string gameObjectTag;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,9 +36,17 @@ public class EPress : MonoBehaviour
 
     public void ActivateEPressed()
     {
-
-        //Do something after pressed E, open shop etc.
-        Debug.Log("E Action");
+        switch (gameObjectTag)
+        {
+            case "Interractable":
+                //Do Something when interracting with something interractable
+                Debug.Log("E Action on Interractable");
+                break;
+            case "Shop":
+                //Do Something when interracting with shop
+                Debug.Log("E Action on Shop");
+                break;
+        }
     }
 
     public void SetGameObject(GameObject gameObject)

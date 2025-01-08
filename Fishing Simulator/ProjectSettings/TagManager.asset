@@ -8,6 +8,8 @@ TagManager:
   - Hook
   - Caught
   - Interractable
+  - InventoryItem
+  - Shop
   layers:
   - Default
   - TransparentFX
@@ -44,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Interact Button
+    uniqueID: 2645210533
     locked: 0

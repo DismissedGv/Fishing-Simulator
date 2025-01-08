@@ -31,6 +31,8 @@ public class Interacting : MonoBehaviour
         instantiated = (GameObject)Instantiate(gameobjectToInstantiate, gameObject.transform.position, quaternion.identity);
         ePress = instantiated.GetComponent<EPress>();
         ePress.currentPosition = col.gameObject;
+        ePress.gameObjectTag = col.gameObject.tag;
+        Debug.Log(col.gameObject.tag);
     }
     public void OnTriggerExit2D(Collider2D col)
     {
@@ -40,26 +42,33 @@ public class Interacting : MonoBehaviour
 
     public void ArrayChanger(bool addBoolean, GameObject[] array, GameObject objectToAddOrDelete)
     {
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (objectToAddOrDelete != array[i])
+            {
+
+            }
+        }
         if (addBoolean)
         {
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < array.Length + 1; i++)
             {
                 if (array[i] == null)
                 {
                     array[i] = objectToAddOrDelete;
-                    Debug.Log("Added");
+                    Debug.Log("Added " + objectToAddOrDelete);
                     i = array.Length;
                 }
             }
         }
         else
         {
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < array.Length + 1; i++)
             {
                 if (array[i] == objectToAddOrDelete)
                 {
                     array[i] = null;
-                    Debug.Log("Deleted");
+                    Debug.Log("Deleted " + objectToAddOrDelete);
                     i = array.Length;
                 }
             }
