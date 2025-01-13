@@ -13,12 +13,16 @@ public class CanvasManager : MonoBehaviour
 
             if (Settings.activeSelf)
             {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
                 isPaused = false;
                 Settings.gameObject.SetActive(false);
                 Time.timeScale = 1f;
             }
             else
             {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 isPaused = true;
                 Settings.gameObject.SetActive(true);
                 Time.timeScale = 0f;

@@ -49,6 +49,20 @@ public class Settings : MonoBehaviour
         PlayerPrefs.SetFloat("VolumeLevel", value);
         PlayerPrefs.Save();
     }
+    public void ChangeResolution(int value){
+        switch(value){
+            case 0:
+            Screen.SetResolution(1920,1080,fullscreenToggle.isOn);
+            break;
+            case 1:
+            Screen.SetResolution(1366,768,fullscreenToggle.isOn);
+            break;
+            case 2:
+            Screen.SetResolution(1280,720,fullscreenToggle.isOn);
+            break;
+        }
+        Debug.Log(value);
+    }
     private float CalculateVolume(float volume)
     {
         return Mathf.Log10(volume)*20;
