@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CanvasManager : MonoBehaviour
 {
-    [SerializeField] private GameObject Settings;
+    [SerializeField] private GameObject settings;
     public bool isPaused {get; private set;} //bool if things needs to be done on pause
     // Update is called once per frame
     void Update()
@@ -11,22 +11,28 @@ public class CanvasManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)) {
         
 
-            if (Settings.activeSelf)
+            if (settings.activeSelf)
             {
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-                isPaused = false;
-                Settings.gameObject.SetActive(false);
-                Time.timeScale = 1f;
+                ResumeGame();
             }
             else
             {
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-                isPaused = true;
-                Settings.gameObject.SetActive(true);
-                Time.timeScale = 0f;
+                PauseGame();
             }
         }
+    }
+    private void ResumeGame(){
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        isPaused = false;
+        settings.gameObject.SetActive(false);
+        Time.timeScale = 1f;
+    }
+    private void PauseGame(){
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        isPaused = true;
+        settings.gameObject.SetActive(true);
+        Time.timeScale = 0f;
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
@@ -79,7 +80,6 @@ public class Settings : MonoBehaviour
     {
         Screen.fullScreen = fullscreenToggle.isOn;
         fullscreenToggleInt = fullscreenToggle.isOn ? 1 : 0;
-        Debug.Log("Fullscreen Toggle Int = " + fullscreenToggleInt);
         PlayerPrefs.SetInt("Fullscreen", fullscreenToggleInt);
         Debug.Log($"Fullscreen: {Screen.fullScreen}, expected: {fullscreenToggle.isOn}"); //Gonna have to try in a build as it doesn't seem to work in-engine
     }
@@ -88,7 +88,6 @@ public class Settings : MonoBehaviour
         //Change volume level and save to PlayerPrefs
         audioMixer.SetFloat("MasterVolume", CalculateVolume(value));
         volume = CalculateVolume(value);
-        Debug.Log("Volume in dB " + volume);
         PlayerPrefs.SetFloat("MasterVolume", value);
         PlayerPrefs.Save();
     }
@@ -96,7 +95,6 @@ public class Settings : MonoBehaviour
         //Change volume level and save to PlayerPrefs
         audioMixer.SetFloat("MusicVolume", CalculateVolume(value));
         volume = CalculateVolume(value);
-        Debug.Log("Volume in dB " + volume);
         PlayerPrefs.SetFloat("MusicVolume", value);
         PlayerPrefs.Save();
     }
@@ -104,7 +102,6 @@ public class Settings : MonoBehaviour
         //Change volume level and save to PlayerPrefs
         audioMixer.SetFloat("SFXVolume", CalculateVolume(value));
         volume = CalculateVolume(value);
-        Debug.Log("Volume in dB " + volume);
         PlayerPrefs.SetFloat("SFXVolume", value);
         PlayerPrefs.Save();
     }
@@ -123,6 +120,26 @@ public class Settings : MonoBehaviour
                 break;
         }
         Debug.Log(value);
+    }
+    public void GoToMainMenu()
+    {
+
+        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1;
+    }
+    public void ExitAndSaveGame(){
+        DataPersistenceManager dpm = GameObject.Find("DataPersistenceManager").GetComponent<DataPersistenceManager>();
+        if(dpm != null){
+            dpm.SaveGame();
+            ExitGame();
+        }
+        else{
+            Debug.Log("No Data Persistence Manager found, exiting without saving");
+            ExitGame();
+        }
+    }
+    public void ExitGame(){
+        Application.Quit();
     }
     private float CalculateVolume(float volume)
     {
